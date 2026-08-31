@@ -1,0 +1,28 @@
+# ADD THIS TO app/__init__.py
+
+# After the other blueprint imports, add:
+from app.routes.jetx_react_api import jetx_react_bp
+
+# Then in the create_app() function, after registering other blueprints, add:
+app.register_blueprint(jetx_react_bp)
+
+# EXAMPLE: If your create_app looks like this:
+"""
+def create_app(config_name='development'):
+    app = Flask(__name__)
+    app.config.from_object(config_mapping[config_name])
+    
+    db.init_app(app)
+    login_manager.init_app(app)
+    
+    # Register blueprints
+    from app.routes.auth import auth_bp
+    from app.routes.games_static import games_static_bp
+    from app.routes.jetx_react_api import jetx_react_bp  # ADD THIS
+    
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(games_static_bp)
+    app.register_blueprint(jetx_react_bp)  # ADD THIS
+    
+    return app
+"""
